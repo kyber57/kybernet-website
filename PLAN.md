@@ -82,3 +82,4 @@ Website/
 - Responsividade & acessibilidade (breakpoints, contraste, `prefers-reduced-motion`, teclado).
 - Metadados & SEO (favicon, OG tags, título/descrição, `lang`).
 - Conteúdo e desbloqueio das seções: Roots, Kyberlab, Engineering, Staff.
+- Fila de frases do taunt (rodar as 10 sem repetição imediata) — lógica comentada em `assets/js/main.js`.
