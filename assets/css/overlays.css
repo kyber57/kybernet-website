@@ -1,0 +1,103 @@
+/* ── Shared overlay base ── */
+.surprise-section,
+.roots-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.surprise-section.active,
+.roots-section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ── Surprise Section ── */
+.surprise-section {
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 3rem;
+    overflow-y: auto;
+}
+
+.surprise-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding-bottom: 8rem;
+}
+
+.surprise-image-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 0 40px rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+
+.surprise-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+}
+
+.surprise-text-container {
+    width: 100%;
+}
+
+.surprise-text {
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.surprise-word {
+    display: block;
+    opacity: 0.9;
+}
+
+/* ── Roots Section ── */
+.roots-section {
+    background: #000000;
+}
+
+#automataCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.roots-back-link {
+    position: fixed;
+    top: 3rem;
+    left: 3rem;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.roots-back-link:hover .back-arrow {
+    stroke: #ffffff;
+}
+
+.roots-back-link:hover .back-text {
+    color: #ffffff;
+}

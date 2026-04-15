@@ -1,0 +1,100 @@
+/* ── Email Form ── */
+.email-form-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.form-label {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.email-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.email-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #444;
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.email-input::placeholder {
+    color: #555;
+}
+
+.email-input:focus {
+    border-bottom-color: #888;
+}
+
+.submit-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+/* ── Email Taunt ── */
+.email-taunt {
+    min-height: 1.2em;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: #cc2222;
+}
+
+/* ── Back Link (shared by Surprise and Roots) ── */
+.back-link {
+    position: fixed;
+    top: 3rem;
+    left: 3rem;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.back-link:hover .back-arrow {
+    stroke: #ffffff;
+}
+
+.back-link:hover .back-text {
+    color: #ffffff;
+}
+
+.back-arrow {
+    display: block;
+}
+
+.back-text {
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+}

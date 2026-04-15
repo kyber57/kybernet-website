@@ -1,0 +1,38 @@
+.registration-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+}
+
+.registration-content {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.registration-text-container {
+    width: 100%;
+}
+
+.registration-text {
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(1.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.reg-word {
+    display: block;
+    opacity: 0.9;
+}

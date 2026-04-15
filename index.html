@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ʞyberиet - We Absorb Complexity</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/registration.css">
+    <link rel="stylesheet" href="assets/css/overlays.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+    <div class="hero-section">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo-container">
+                <svg width="50" height="50" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                    <!-- ʞ -->
+                    <line x1="54" y1="25" x2="54" y2="125"
+                          stroke="#ffffff" stroke-width="7" stroke-linecap="butt"/>
+                    <line x1="54" y1="59" x2="8" y2="99"
+                          stroke="#ffffff" stroke-width="9" stroke-linecap="butt"/>
+                    <line x1="45" y1="67" x2="8" y2="29"
+                          stroke="#ffffff" stroke-width="9" stroke-linecap="butt"/>
+                    <!-- y -->
+                    <line x1="66" y1="25" x2="104" y2="83"
+                          stroke="#ffffff" stroke-width="9" stroke-linecap="butt"/>
+                    <line x1="136" y1="25" x2="81" y2="125"
+                          stroke="#ffffff" stroke-width="9" stroke-linecap="butt"/>
+                </svg>
+                <span class="logo-text">ʞyberиet</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#roots">Roots</a></li>
+                <li class="separator">|</li>
+                <li>
+                    <a href="#kyberlab" class="locked">
+                        Kyberlab
+                        <svg class="lock-icon" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="5" width="8" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M 3.5 5 V 3.5 C 3.5 2.12 4.62 1 6 1 C 7.38 1 8.5 2.12 8.5 3.5 V 5" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="separator">|</li>
+                <li>
+                    <a href="#engineering" class="locked">
+                        Engineering
+                        <svg class="lock-icon" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="5" width="8" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M 3.5 5 V 3.5 C 3.5 2.12 4.62 1 6 1 C 7.38 1 8.5 2.12 8.5 3.5 V 5" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="separator">|</li>
+                <li>
+                    <a href="#staff" class="locked">
+                        Staff
+                        <svg class="lock-icon" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="5" width="8" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M 3.5 5 V 3.5 C 3.5 2.12 4.62 1 6 1 C 7.38 1 8.5 2.12 8.5 3.5 V 5" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="separator">|</li>
+                <li><a style="cursor: pointer;" id="surpriseLink">Surprise</a></li>
+                <li class="separator">|</li>
+                <li><button id="langToggle" class="lang-toggle" data-i18n="lang-toggle">EN</button></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <div class="hero-text">
+                    <div class="word" id="word-we">W<span class="flip-h">E</span>.</div>
+                    <div class="word" id="word-absorb"><span class="flip-v">A</span><span class="flip-h">B</span>SOR<span class="flip-h">B</span>.</div>
+                    <div class="word" id="word-complexity">COM<span class="flip-h">P</span>L<span class="flip-h">E</span>XITY.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <svg class="scroll-arrow" width="20" height="60" viewBox="0 0 20 60" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10" y1="0" x2="10" y2="50" stroke="#999" stroke-width="1.5"/>
+                <polyline points="5,45 10,52 15,45" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="scroll-text" data-i18n="scroll-text">Scroll down</div>
+        </div>
+
+        <!-- Star Decoration -->
+        <div class="star-decoration">
+            <svg viewBox="0 0 100 100">
+                <path d="M 50 0 L 61 39 L 100 50 L 61 61 L 50 100 L 39 61 L 0 50 L 39 39 Z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Second Section - Email Registration -->
+    <div class="registration-section" id="register">
+        <div class="registration-content">
+            <div class="registration-text-container">
+                <div class="registration-text">
+                    <div class="reg-word" data-i18n="reg-line-1">CURIOSITY</div>
+                    <div class="reg-word" data-i18n="reg-line-2">IS IMPORTANT.</div>
+                    <div class="reg-word" data-i18n="reg-line-3">BUT IS NOT</div>
+                    <div class="reg-word" data-i18n="reg-line-4">ENOUGH.</div>
+                </div>
+            </div>
+
+            <div class="email-form-container">
+                <p class="form-label" data-i18n="form-label">Register for more...</p>
+                <form class="email-form">
+                    <input
+                        type="email"
+                        placeholder="your@email.com"
+                        data-i18n-placeholder="email-placeholder"
+                        required
+                        class="email-input"
+                    />
+                    <button type="submit" class="submit-btn">→</button>
+                </form>
+                <p class="email-taunt"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Surprise Section (hidden by default) -->
+    <div class="surprise-section" id="surpriseSection">
+        <div class="surprise-content">
+            <div class="surprise-image-container">
+                <img src="Ducreux1.jpg" class="surprise-image" alt="Surprise"/>
+            </div>
+
+            <div class="surprise-text-container">
+                <div class="surprise-text">
+                    <div class="surprise-word" data-i18n="surprise-line-1">REALLY THOUGHT</div>
+                    <div class="surprise-word" data-i18n="surprise-line-2">YOU'D GET A</div>
+                    <div class="surprise-word" data-i18n="surprise-line-3">SURPRISE?</div>
+                    <div class="surprise-word" data-i18n="surprise-line-4">YOU GOTTA EARN IT.</div>
+                </div>
+            </div>
+
+            <div class="email-form-container">
+                <p class="form-label" data-i18n="surprise-label">Register for more...</p>
+                <form class="email-form surprise-form">
+                    <input
+                        type="email"
+                        placeholder="your@email.com"
+                        data-i18n-placeholder="email-placeholder"
+                        required
+                        class="email-input"
+                    />
+                    <button type="submit" class="submit-btn">→</button>
+                </form>
+                <p class="email-taunt"></p>
+            </div>
+        </div>
+
+        <div class="back-link" id="backToHome">
+            <svg class="back-arrow" width="60" height="20" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10" y1="10" x2="58" y2="10" stroke="#999" stroke-width="1.5"/>
+                <polyline points="15,5 8,10 15,15" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="back-text" data-i18n="back-home">Back to home</span>
+        </div>
+    </div>
+
+    <!-- Roots Section (hidden by default) -->
+    <div class="roots-section" id="rootsSection">
+        <canvas id="automataCanvas"></canvas>
+
+        <div class="roots-back-link" id="backFromRoots">
+            <svg class="back-arrow" width="60" height="20" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10" y1="10" x2="58" y2="10" stroke="#999" stroke-width="1.5"/>
+                <polyline points="15,5 8,10 15,15" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="back-text" data-i18n="back-home">Back to home</span>
+        </div>
+    </div>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/automata.js"></script>
+    <script src="assets/js/overlays.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
