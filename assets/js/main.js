@@ -60,48 +60,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Matches a complete, valid email address
 const COMPLETE_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
-function shufflePhrases() {
-    const list = [...getPhrases()];
-    for (let i = list.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [list[i], list[j]] = [list[j], list[i]];
-    }
-    return list;
-}
+// Fixed taunt phrase per language — shown letter by letter while typing,
+// revealed in full when email is complete.
+const TAUNT_PHRASE = {
+    'pt-BR': 'Esse e-mail vai pro /dev/null por enquanto.',
+    'en':    'This email goes to /dev/null for now.',
+};
 
-// Email taunt + submit — scoped per form container so they share the phrase queue
 document.querySelectorAll('.email-form-container').forEach(container => {
     const input = container.querySelector('.email-input');
     const taunt = container.querySelector('.email-taunt');
     const form  = container.querySelector('.email-form');
     if (!input || !taunt || !form) return;
 
-    let queue   = [];
-    let current = '';
-
-    function advance() {
-        if (queue.length === 0) queue = shufflePhrases();
-        current = queue.shift();
+    function phrase() {
+        return TAUNT_PHRASE[getStoredLang()] || TAUNT_PHRASE['pt-BR'];
     }
-
-    advance(); // initialise with first phrase
 
     input.addEventListener('input', () => {
         const val = input.value;
-
-        if (val.length === 0) {
-            taunt.textContent = '';
-            return;
-        }
+        if (val.length === 0) { taunt.textContent = ''; return; }
 
         if (COMPLETE_EMAIL_RE.test(val)) {
-            // Email complete — show full phrase and pre-load next for next session
-            taunt.textContent = current;
-            advance();
+            taunt.textContent = phrase();          // full phrase at once
         } else {
-            // Still typing — letter by letter
-            if (val.length > current.length) advance();
-            taunt.textContent = current.slice(0, val.length);
+            taunt.textContent = phrase().slice(0, val.length); // letter by letter
         }
     });
 
@@ -116,7 +99,28 @@ document.querySelectorAll('.email-form-container').forEach(container => {
             btn.classList.remove('submit-error');
             form.reset();
             taunt.textContent = '';
-            advance(); // fresh phrase for next session
         }, 700);
     });
 });
+
+/*
+ * TODO: phrase queue (rotate through all 10 phrases without immediate repeats)
+ *
+ * function shufflePhrases() {
+ *     const list = [...getPhrases()];
+ *     for (let i = list.length - 1; i > 0; i--) {
+ *         const j = Math.floor(Math.random() * (i + 1));
+ *         [list[i], list[j]] = [list[j], list[i]];
+ *     }
+ *     return list;
+ * }
+ *
+ * Per container:
+ *   let queue = [], current = '';
+ *   function advance() {
+ *       if (queue.length === 0) queue = shufflePhrases();
+ *       current = queue.shift();
+ *   }
+ *   advance();
+ *   — call advance() on: init, email complete, after submit
+ */
