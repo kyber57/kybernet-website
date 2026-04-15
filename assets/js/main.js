@@ -60,59 +60,63 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Matches a complete, valid email address
 const COMPLETE_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
-// Email taunt — letter by letter while typing; full phrase when email is complete
+function shufflePhrases() {
+    const list = [...getPhrases()];
+    for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
+}
+
+// Email taunt + submit — scoped per form container so they share the phrase queue
 document.querySelectorAll('.email-form-container').forEach(container => {
     const input = container.querySelector('.email-input');
     const taunt = container.querySelector('.email-taunt');
-    if (!input || !taunt) return;
+    const form  = container.querySelector('.email-form');
+    if (!input || !taunt || !form) return;
 
-    let currentPhrase = '';
+    let queue   = [];
+    let current = '';
 
-    function pickPhrase() {
-        const list = getPhrases();
-        return list[Math.floor(Math.random() * list.length)];
+    function advance() {
+        if (queue.length === 0) queue = shufflePhrases();
+        current = queue.shift();
     }
 
-    input.addEventListener('focus', () => {
-        if (!currentPhrase) currentPhrase = pickPhrase();
-    });
+    advance(); // initialise with first phrase
 
     input.addEventListener('input', () => {
         const val = input.value;
+
         if (val.length === 0) {
             taunt.textContent = '';
-            currentPhrase = pickPhrase();
             return;
         }
+
         if (COMPLETE_EMAIL_RE.test(val)) {
-            // Email complete — reveal full phrase at once
-            taunt.textContent = currentPhrase;
+            // Email complete — show full phrase and pre-load next for next session
+            taunt.textContent = current;
+            advance();
         } else {
-            // Still typing — reveal letter by letter
-            if (val.length > currentPhrase.length) currentPhrase = pickPhrase();
-            taunt.textContent = currentPhrase.slice(0, val.length);
+            // Still typing — letter by letter
+            if (val.length > current.length) advance();
+            taunt.textContent = current.slice(0, val.length);
         }
     });
-});
 
-// Email form submissions — shake page + red button
-document.querySelectorAll('.email-form').forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const btn   = form.querySelector('.submit-btn');
-        const taunt = form.closest('.email-form-container').querySelector('.email-taunt');
-
-        // Red button
+        const btn = form.querySelector('.submit-btn');
         btn.classList.add('submit-error');
-
-        // Shake entire page
         document.body.classList.add('shake');
 
         setTimeout(() => {
             document.body.classList.remove('shake');
             btn.classList.remove('submit-error');
             form.reset();
-            if (taunt) taunt.textContent = '';
+            taunt.textContent = '';
+            advance(); // fresh phrase for next session
         }, 700);
     });
 });
