@@ -59,6 +59,13 @@
     transform: translateX(3px);
 }
 
+.submit-btn.submit-error {
+    border-color: #cc2222;
+    color: #cc2222;
+    transform: none;
+    transition: border-color 0.1s, color 0.1s;
+}
+
 /* ── Email Taunt ── */
 .email-taunt {
     min-height: 1.2em;

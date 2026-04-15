@@ -57,10 +57,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Email taunt — reveals a phrase letter by letter as the user types
+// Matches a complete, valid email address
+const COMPLETE_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
+// Email taunt — letter by letter while typing; full phrase when email is complete
 document.querySelectorAll('.email-form-container').forEach(container => {
-    const input  = container.querySelector('.email-input');
-    const taunt  = container.querySelector('.email-taunt');
+    const input = container.querySelector('.email-input');
+    const taunt = container.querySelector('.email-taunt');
     if (!input || !taunt) return;
 
     let currentPhrase = '';
@@ -75,26 +78,41 @@ document.querySelectorAll('.email-form-container').forEach(container => {
     });
 
     input.addEventListener('input', () => {
-        const len = input.value.length;
-        if (len === 0) {
+        const val = input.value;
+        if (val.length === 0) {
             taunt.textContent = '';
             currentPhrase = pickPhrase();
             return;
         }
-        if (len > currentPhrase.length) {
-            currentPhrase = pickPhrase();
+        if (COMPLETE_EMAIL_RE.test(val)) {
+            // Email complete — reveal full phrase at once
+            taunt.textContent = currentPhrase;
+        } else {
+            // Still typing — reveal letter by letter
+            if (val.length > currentPhrase.length) currentPhrase = pickPhrase();
+            taunt.textContent = currentPhrase.slice(0, val.length);
         }
-        taunt.textContent = currentPhrase.slice(0, len);
     });
 });
 
-// Email form submissions
+// Email form submissions — shake page + red button
 document.querySelectorAll('.email-form').forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = e.target.querySelector('.email-input').value;
-        console.log('Email registered:', email);
-        alert("Thanks for your interest! We'll be in touch soon.");
-        e.target.reset();
+        const btn   = form.querySelector('.submit-btn');
+        const taunt = form.closest('.email-form-container').querySelector('.email-taunt');
+
+        // Red button
+        btn.classList.add('submit-error');
+
+        // Shake entire page
+        document.body.classList.add('shake');
+
+        setTimeout(() => {
+            document.body.classList.remove('shake');
+            btn.classList.remove('submit-error');
+            form.reset();
+            if (taunt) taunt.textContent = '';
+        }, 700);
     });
 });
