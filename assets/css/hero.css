@@ -139,4 +139,34 @@
     .hero-text {
         font-size: clamp(1.5rem, 7vw, 4rem);
     }
+
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .scroll-indicator {
+        bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text {
+        font-size: clamp(1.2rem, 10vw, 3rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .word {
+        opacity: 1;
+        transform: none;
+    }
+
+    .word.animate {
+        animation: none;
+    }
+
+    .scroll-indicator {
+        opacity: 1;
+        transition: none;
+    }
 }

@@ -24,3 +24,9 @@ body {
 body.shake {
     animation: shake 0.7s ease-in-out;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    body.shake {
+        animation: none;
+    }
+}
